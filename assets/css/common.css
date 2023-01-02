@@ -15,6 +15,10 @@ body {
 .saudacao {
   padding: 0 20px 0 20px;
 }
+img.main {
+  width: auto;
+  height: 480px;
+}
 .icon {
   width: 48px;
   height: auto;
