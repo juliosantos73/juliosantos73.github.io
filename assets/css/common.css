@@ -8,18 +8,21 @@ body {
   background-color: #000000;
   color: #eeeeee;
 }
-.container {
+div.container {
   padding: 15px;
   display: flex;
 }
-.saudacao {
+div.saudacao {
   padding: 0 20px 0 20px;
 }
 img.main {
   width: auto;
   height: 480px;
 }
-.icon {
+h1.titulo {
+  margin: 0;
+}
+svg.icon {
   width: 48px;
   height: auto;
 }
