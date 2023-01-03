@@ -29,7 +29,10 @@ span.motivar {
   font-size: 1.25em;
   font-weight: bold;
 }
+div.redes {
+  padding: 30px 0 0 0;
+}
 svg.icon {
-  width: 48px;
-  height: auto;
+  width: auto;
+  height: 36px;
 }
