@@ -56,7 +56,7 @@ svg.icon {
     background-color: #3f3f46;
     border-radius: 5px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     div.main-content {
         flex-direction: column;
         align-items: center;
