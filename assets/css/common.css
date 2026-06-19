@@ -437,10 +437,38 @@ a {
     margin-bottom: 16px;
 }
 
+.edu-badge {
+    display: inline-block;
+    background: rgba(0, 170, 216, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(0, 170, 216, 0.3);
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 1px 7px;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+}
+
+.certs-group-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 24px 0 10px;
+}
+
+.certs-group-label:first-of-type {
+    margin-top: 0;
+}
+
 .certs-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 4px;
 }
 
 .cert-item {
