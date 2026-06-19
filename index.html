@@ -614,6 +614,51 @@ function renderProjects(repos) {
   }).join('');
 }
 
+// Intersection Observer — reveal on scroll
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  // Secções completas
+  document.querySelectorAll('.about-content, .section-title, .education-card, .subsection-title, .certs-group-label, .certs-list, .footer-tagline, .footer-social').forEach(function(el) {
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+
+  // Timeline — cada item com delay progressivo
+  document.querySelectorAll('.timeline-item').forEach(function(el, i) {
+    el.classList.add('reveal', 'reveal-delay-' + Math.min(i + 1, 5));
+    io.observe(el);
+  });
+
+  // Stack cards — stagger
+  document.querySelectorAll('.stack-category').forEach(function(el, i) {
+    el.classList.add('reveal', 'reveal-delay-' + Math.min(i + 1, 5));
+    io.observe(el);
+  });
+
+  // Projeto cards — stagger (observa o grid; os cards são carregados depois)
+  var projectsGrid = document.getElementById('projectsGrid');
+  if (projectsGrid) {
+    var cardObserver = new MutationObserver(function() {
+      projectsGrid.querySelectorAll('.project-card').forEach(function(el, i) {
+        if (!el.classList.contains('reveal')) {
+          el.classList.add('reveal', 'reveal-delay-' + Math.min(i + 1, 5));
+          io.observe(el);
+        }
+      });
+    });
+    cardObserver.observe(projectsGrid, { childList: true });
+  }
+})();
+
 (function() {
   fetch('https://api.github.com/search/repositories?q=user:juliosantos73+topic:featured&sort=updated&per_page=12')
     .then(function(r) { return r.json(); })
