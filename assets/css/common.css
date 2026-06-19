@@ -53,6 +53,7 @@ html[data-theme="light"] .nav-links.open {
 }
 
 html[data-theme="light"] .hero-name,
+html[data-theme="light"] .section-title,
 html[data-theme="light"] .timeline-role,
 html[data-theme="light"] .edu-degree {
     color: #111111;
