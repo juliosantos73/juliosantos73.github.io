@@ -15,5 +15,4 @@ Thumbs.db
 node_modules/
 
 # Ficheiros sensíveis / contexto interno
-CLAUDE.md
 *.ipynb
