@@ -607,27 +607,65 @@ function escHtml(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+var SUBGROUP_LABELS = {
+  devops:     'DevOps',
+  security:   'Security',
+  cost:       'Cost Optimization',
+  backup:     'Backup & DR',
+  iac:        'Infrastructure as Code',
+  cicd:       'CI/CD',
+  containers: 'Containers',
+  automation: 'Automation'
+};
+
+function subgroupLabel(key) {
+  return SUBGROUP_LABELS[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+}
+
+function renderCard(r) {
+  var lang = r.language || '';
+  var dot = lang ? '<span class="lang-dot" style="background:' + (LANG_COLORS[lang] || '#888') + '"></span>' + escHtml(lang) : '';
+  var desc = r.description ? '<p class="project-desc">' + escHtml(r.description) + '</p>' : '<p class="project-desc project-desc-empty">&mdash;</p>';
+  return '<a class="project-card" href="' + escHtml(r.html_url) + '" target="_blank" rel="noopener">' +
+    '<div class="project-card-header">' +
+      '<span class="project-name">' + escHtml(r.name) + '</span>' +
+      '<svg class="project-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
+    '</div>' +
+    desc +
+    '<div class="project-meta">' +
+      (dot ? '<span class="project-lang">' + dot + '</span>' : '') +
+      '<span class="project-stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>' + r.stargazers_count + '</span>' +
+    '</div>' +
+  '</a>';
+}
+
 function renderProjects(repos) {
   var grid = document.getElementById('projectsGrid');
   if (!repos || !repos.length) {
     grid.innerHTML = '<p class="projects-empty">Nenhum repositório com o tópico <code>featured</code> encontrado. Adiciona o tópico nos teus repositórios no GitHub.</p>';
     return;
   }
-  grid.innerHTML = repos.map(function(r) {
-    var lang = r.language || '';
-    var dot = lang ? '<span class="lang-dot" style="background:' + (LANG_COLORS[lang] || '#888') + '"></span>' + escHtml(lang) : '';
-    var desc = r.description ? '<p class="project-desc">' + escHtml(r.description) + '</p>' : '<p class="project-desc project-desc-empty">&mdash;</p>';
-    return '<a class="project-card" href="' + escHtml(r.html_url) + '" target="_blank" rel="noopener">' +
-      '<div class="project-card-header">' +
-        '<span class="project-name">' + escHtml(r.name) + '</span>' +
-        '<svg class="project-external" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
-      '</div>' +
-      desc +
-      '<div class="project-meta">' +
-        (dot ? '<span class="project-lang">' + dot + '</span>' : '') +
-        '<span class="project-stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>' + r.stargazers_count + '</span>' +
-      '</div>' +
-    '</a>';
+
+  // Group repos by their second topic (any topic that isn't "featured")
+  var groups = {};
+  var order = [];
+  repos.forEach(function(r) {
+    var topics = r.topics || [];
+    var sub = '';
+    for (var i = 0; i < topics.length; i++) {
+      if (topics[i] !== 'featured') { sub = topics[i]; break; }
+    }
+    if (!groups[sub]) { groups[sub] = []; order.push(sub); }
+    groups[sub].push(r);
+  });
+
+  grid.innerHTML = order.map(function(sub) {
+    var cards = groups[sub].map(renderCard).join('');
+    if (!sub) return '<div class="projects-group-grid">' + cards + '</div>';
+    return '<div class="projects-group">' +
+      '<h3 class="projects-subgroup-title">' + escHtml(subgroupLabel(sub)) + '</h3>' +
+      '<div class="projects-group-grid">' + cards + '</div>' +
+    '</div>';
   }).join('');
 }
 
@@ -661,7 +699,7 @@ function renderProjects(repos) {
     io.observe(el);
   });
 
-  // Projeto cards — stagger (observa o grid; os cards são carregados depois)
+  // Projeto cards — stagger (observa o grid e subgrids; os cards são carregados depois)
   var projectsGrid = document.getElementById('projectsGrid');
   if (projectsGrid) {
     var cardObserver = new MutationObserver(function() {
@@ -672,12 +710,14 @@ function renderProjects(repos) {
         }
       });
     });
-    cardObserver.observe(projectsGrid, { childList: true });
+    cardObserver.observe(projectsGrid, { childList: true, subtree: true });
   }
 })();
 
 (function() {
-  fetch('https://api.github.com/search/repositories?q=user:juliosantos73+topic:featured&sort=updated&per_page=12')
+  fetch('https://api.github.com/search/repositories?q=user:juliosantos73+topic:featured&sort=updated&per_page=30', {
+    headers: { 'Accept': 'application/vnd.github+json' }
+  })
     .then(function(r) { return r.json(); })
     .then(function(data) { renderProjects(data.items); })
     .catch(function() {

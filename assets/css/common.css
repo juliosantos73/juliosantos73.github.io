@@ -506,9 +506,26 @@ html[data-theme="light"] .theme-btn .icon-moon { display: block; }
 
 /* ── PROJECTS ── */
 .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.projects-group-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+}
+
+.projects-subgroup-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
 }
 
 .project-card {
