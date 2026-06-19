@@ -147,12 +147,13 @@ body {
     cursor: pointer;
     padding: 4px 4px;
     border-radius: 4px;
-    opacity: 0.45;
-    transition: opacity 0.2s, transform 0.2s;
+    transform: scale(1);
+    filter: grayscale(0.7) opacity(0.45);
+    transition: filter 0.2s, transform 0.2s;
 }
 
-.lang-btn:hover { opacity: 0.85; transform: scale(1.15); }
-.lang-btn.active { opacity: 1; transform: scale(1.1); }
+.lang-btn:hover { filter: grayscale(0) opacity(1); transform: scale(1.15); }
+.lang-btn.active { filter: grayscale(0) opacity(1); transform: scale(1.1); }
 
 .lang-sep {
     color: var(--border);
