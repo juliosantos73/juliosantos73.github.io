@@ -78,6 +78,43 @@ a {
     color: var(--accent);
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    border-left: 1px solid var(--border);
+    padding-left: 16px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: color 0.2s;
+}
+
+.lang-btn:hover { color: var(--accent); }
+.lang-btn.active { color: var(--accent); font-weight: 700; }
+
+.lang-sep {
+    color: var(--border);
+    font-size: 0.65rem;
+    line-height: 1;
+}
+
 .nav-hamburger {
     display: none;
     flex-direction: column;
@@ -547,6 +584,14 @@ a {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
+    .nav-right {
+        gap: 8px;
+    }
+
+    .lang-switcher {
+        padding-left: 10px;
+    }
+
     .nav-hamburger {
         display: flex;
     }
