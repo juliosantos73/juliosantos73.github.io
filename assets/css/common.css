@@ -32,6 +32,52 @@ a {
     text-decoration: none;
 }
 
+/* ── LIGHT THEME ── */
+html[data-theme="light"] {
+    --bg: #f4f4f5;
+    --bg-alt: #e8e8ea;
+    --bg-card: #ffffff;
+    --accent: #0090bb;
+    --accent-glow: rgba(0, 144, 187, 0.12);
+    --text: #18181b;
+    --text-muted: #52525b;
+    --border: #d4d4d8;
+}
+
+html[data-theme="light"] .nav {
+    background: rgba(244, 244, 245, 0.92);
+}
+
+html[data-theme="light"] .nav-links.open {
+    background: rgba(244, 244, 245, 0.98);
+}
+
+html[data-theme="light"] .hero-name,
+html[data-theme="light"] .timeline-role,
+html[data-theme="light"] .edu-degree {
+    color: #111111;
+}
+
+html[data-theme="light"] .tag {
+    background: #e4e4e7;
+}
+
+html[data-theme="light"] .footer {
+    background: #e4e4e7;
+}
+
+html[data-theme="light"] .footer-copy {
+    color: var(--text-muted);
+}
+
+body {
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.nav, .timeline-content, .stack-category, .education-card, .cert-item, .tag, .footer, .footer-link {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
 /* ── NAV ── */
 .nav {
     position: sticky;
@@ -114,6 +160,30 @@ a {
     font-size: 0.65rem;
     line-height: 1;
 }
+
+.theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    transition: color 0.2s;
+}
+
+.theme-btn:hover { color: var(--accent); }
+
+.theme-btn svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.icon-sun { display: none; }
+html[data-theme="light"] .icon-moon { display: none; }
+html[data-theme="light"] .icon-sun  { display: block; }
 
 .nav-hamburger {
     display: none;
