@@ -434,7 +434,12 @@ a {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.12em;
+    margin-top: 44px;
     margin-bottom: 16px;
+}
+
+.subsection-title:first-of-type {
+    margin-top: 0;
 }
 
 .edu-badge {
