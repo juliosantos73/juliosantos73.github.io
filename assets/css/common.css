@@ -142,19 +142,17 @@ body {
 .lang-btn {
     background: none;
     border: none;
-    color: var(--text-muted);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
+    font-size: 1.1rem;
+    line-height: 1;
     cursor: pointer;
-    padding: 4px 6px;
+    padding: 4px 4px;
     border-radius: 4px;
-    transition: color 0.2s;
+    opacity: 0.45;
+    transition: opacity 0.2s, transform 0.2s;
 }
 
-.lang-btn:hover { color: var(--accent); }
-.lang-btn.active { color: var(--accent); font-weight: 700; }
+.lang-btn:hover { opacity: 0.85; transform: scale(1.15); }
+.lang-btn.active { opacity: 1; transform: scale(1.1); }
 
 .lang-sep {
     color: var(--border);
