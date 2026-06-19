@@ -344,6 +344,7 @@ html[data-theme="light"] .theme-btn .icon-moon { display: block; }
     margin-bottom: 18px;
     max-width: 720px;
     font-size: 0.975rem;
+    text-align: justify;
 }
 
 .about-content p:last-child {
