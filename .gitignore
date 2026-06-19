@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Node (caso venha a usar alguma ferramenta local)
+node_modules/
+
+# Ficheiros sensíveis / contexto interno
+CLAUDE.md
+*.ipynb
