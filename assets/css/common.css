@@ -181,9 +181,9 @@ body {
     display: block;
 }
 
-.theme-btn .icon-sun  { display: none; }
-html[data-theme="light"] .theme-btn .icon-moon { display: none; }
-html[data-theme="light"] .theme-btn .icon-sun  { display: block; }
+.theme-btn .icon-moon { display: none; }
+html[data-theme="light"] .theme-btn .icon-sun  { display: none; }
+html[data-theme="light"] .theme-btn .icon-moon { display: block; }
 
 .nav-hamburger {
     display: none;
