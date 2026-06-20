@@ -56,3 +56,4 @@ Estado: https://github.com/juliosantos73/juliosantos73.github.io/actions
 ## Destacar projetos GitHub
 
 Para um repositório aparecer na secção de projetos, adiciona o tópico `featured` nas suas Settings → About ⚙️ → Topics.
+
