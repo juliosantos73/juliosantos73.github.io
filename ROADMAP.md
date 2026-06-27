@@ -26,4 +26,4 @@ Evolution of the personal website [juliosantos73.github.io](https://juliosantos7
 - [ ] Print mode / export as PDF (CV version)
 - [ ] Dynamically calculated years of experience counter
 - [ ] "Copy email" button in the footer
-- [ ] Scroll progress bar at the top of the page
+- [x] Scroll progress bar at the top of the page
