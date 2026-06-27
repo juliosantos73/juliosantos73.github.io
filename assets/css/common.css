@@ -79,6 +79,18 @@ body {
     transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), #00e5ff);
+    z-index: 200;
+    transition: width 0.1s linear;
+}
+
 /* ── NAV ── */
 .nav {
     position: sticky;

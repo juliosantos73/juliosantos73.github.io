@@ -78,6 +78,7 @@
     </script>
 </head>
 <body>
+<div id="scroll-progress"></div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -775,6 +776,16 @@ function renderProjects(repos) {
       var grid = document.getElementById('projectsGrid');
       if (grid) grid.innerHTML = '<p class="projects-error">Não foi possível carregar os projetos. Tenta novamente mais tarde.</p>';
     });
+})();
+
+// Scroll progress bar
+(function() {
+  var bar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY || document.documentElement.scrollTop;
+    var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+  }, { passive: true });
 })();
 </script>
 
