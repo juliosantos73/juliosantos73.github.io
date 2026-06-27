@@ -18,6 +18,7 @@ Evolution of the personal website [juliosantos73.github.io](https://juliosantos7
 - [x] Repositioned as Tech Lead & Software Engineer with Java as foundation
 - [x] `.gitignore` configured
 - [x] README.md and ROADMAP.md
+- [x] Scroll progress bar at the top of the page
 
 ---
 
@@ -26,4 +27,3 @@ Evolution of the personal website [juliosantos73.github.io](https://juliosantos7
 - [ ] Print mode / export as PDF (CV version)
 - [ ] Dynamically calculated years of experience counter
 - [ ] "Copy email" button in the footer
-- [x] Scroll progress bar at the top of the page
