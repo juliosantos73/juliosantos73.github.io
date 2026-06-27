@@ -1,6 +1,6 @@
 # juliosantos73.github.io
 
-Site pessoal e currículo online de **Julio Santos**, publicado via GitHub Pages.
+Personal website and online résumé of **Julio Santos**, published via GitHub Pages.
 
 🔗 https://juliosantos73.github.io/
 
@@ -8,52 +8,56 @@ Site pessoal e currículo online de **Julio Santos**, publicado via GitHub Pages
 
 ## Stack
 
-HTML + CSS + JavaScript puro. Sem frameworks, sem bundler, sem dependências de runtime.
+Pure HTML + CSS + JavaScript. No frameworks, no bundler, no runtime dependencies.
 
-## Estrutura
+## Structure
 
 ```
-index.html              — página única com todo o conteúdo e lógica
+index.html              — single page with all content and logic
 assets/
-  css/common.css        — todos os estilos
+  css/common.css        — all styles
   img/
-    julio-linkedin.jpeg — foto de perfil (hero)
-    favicon.svg         — favicon com iniciais JS
+    julio-linkedin.jpeg — profile photo (hero)
+    favicon.svg         — favicon with initials JS
+robots.txt              — crawler permissions
+sitemap.xml             — sitemap for search engines
 .gitignore
 ```
 
-## Funcionalidades
+## Features
 
-- **Seletor de idioma** 🇵🇹 🇬🇧 🇪🇸 — traduções via `data-i18n` e objeto `T`, guardadas em `localStorage`
-- **Dark / light mode** — toggle com `data-theme` no `<html>`, sem flash ao carregar
-- **Nav responsiva** — hamburger menu em mobile, sticky com blur
-- **Projetos GitHub** — secção que busca automaticamente repos com o tópico `featured` via API pública
-- **Animações de entrada** — Intersection Observer com fade + slide up, respeita `prefers-reduced-motion`
-- **Open Graph / Twitter Card** — meta tags para partilha em redes sociais
-- **Favicon SVG** — iniciais JS em cor accent, consistente com o logo da nav
+- **Language switcher** 🇵🇹 🇺🇸 🇪🇸 — translations via `data-i18n` and `T` object, saved in `localStorage`
+- **Dark / light mode** — toggle with `data-theme` on `<html>`, no flash on load
+- **Responsive nav** — hamburger menu on mobile, sticky with blur
+- **GitHub Projects** — section that automatically fetches repos with the `featured` topic via public API, grouped by secondary topic
+- **Entry animations** — Intersection Observer with fade + slide up, respects `prefers-reduced-motion`
+- **SEO** — JSON-LD Schema.org Person, meta keywords, canonical URL, sitemap, Google Search Console verified
+- **Open Graph / Twitter Card** — meta tags for social sharing
+- **SVG Favicon** — initials JS in accent colour, consistent with nav logo
 
-## Secções
+## Sections
 
-1. Hero — foto, nome, título, tagline, CTAs
-2. Sobre — trajetória, contexto histórico, formação
-3. Experiência — timeline com 4 posições
-4. Stack — 5 categorias de tecnologias
-5. Projetos — repos GitHub com tópico `featured`
-6. Formação & Certificações — grau + Samsung Ocean + UniFavip Wyden
-7. Footer — contacto e redes sociais
+1. Hero — photo, name, title, tagline, CTAs
+2. About — background, experience framing, education
+3. Experience — timeline with 4 positions
+4. Stack — 5 technology categories
+5. Projects — GitHub repos with the `featured` topic
+6. Education & Certifications — degree + Samsung Ocean + UniFavip Wyden
+7. Footer — contact and social links
 
 ## Deploy
 
 ```bash
 git add .
-git commit -m "descrição"
+git commit -m "description"
 git push origin main
 ```
 
-O GitHub Pages publica automaticamente em ~1 minuto após o push.
-Estado: https://github.com/juliosantos73/juliosantos73.github.io/actions
+GitHub Pages publishes automatically within ~1 minute after push.
+Status: https://github.com/juliosantos73/juliosantos73.github.io/actions
 
-## Destacar projetos GitHub
+## Highlighting GitHub Projects
 
-Para um repositório aparecer na secção de projetos, adiciona o tópico `featured` nas suas Settings → About ⚙️ → Topics.
+For a repository to appear in the projects section, add the `featured` topic in its Settings → About ⚙️ → Topics.
 
+To group projects by category, add a second topic (e.g. `backend`, `frontend`, `devops`). The section will render a subgroup header automatically.
